@@ -15,7 +15,7 @@
 		<script src="http://code.jquery.com/jquery-2.2.2.min.js"></script>
 
 		<!-- Google Maps API -->
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap" async defer></script>
 
 		<!-- Handlebars -->
   	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
@@ -30,11 +30,26 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div id="map"></div>
+						<script>
+							function initMap() {
+								map = new google.maps.Map(document.getElementById('map'), 
+								{center: {lat: 39.76, lng: -105.01},
+								zoom: 2});
+							}
+						</script>
 				</div>
 				<div class="col-md-6">
 					<div id="info">
 						<h1>Earthquakes from the past week:</h1>
 						<!-- <p>M 4.2 - 1km ESE of Fontana, California / 123 hours ago </p> -->
+						<script id="quakeScript" type="text/x-handlebars-template">
+							<ul>
+								{{#each quakes}}
+									<li class='{{properties.severity}}'><span>{{properties.title}} - This quake was {{properties.howLongAgo}} hours ago</span></li>
+								{{/each}}
+							</ul>
+						</script>
+
 					</div>
 				</div>
 			</div>

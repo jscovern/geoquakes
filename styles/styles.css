@@ -5,3 +5,23 @@
   height: 600px;
   margin-top: 20px;
 }
+
+.redDot {
+	color: red;
+}
+
+.greenDot {
+	color: green;
+}
+
+.yellowDot {
+	color: yellow;
+}
+
+.orangeDot {
+	color: orange;
+}
+
+li span {
+	color: black;
+}
